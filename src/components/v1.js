@@ -13,6 +13,28 @@ function Pokedex() {
       .then((data) => setPokemon(data))
       .catch((error) => console.error("Error fetching user data:", error));
   }, [pokeId]);
+  const typeColors = {
+    normal: "#A8A878",
+    fire: "#F08030",
+    water: "#6890F0",
+    electric: "#F8D030",
+    grass: "#78C850",
+    poison:"#B97FC9",
+    bug:"#729F3F",
+    fairy:"#FDB9E9",
+    ground:"#AB9842",
+    dark:"#707070",
+    psychic:"#F366B9",
+    dragon:"#F16E57",
+    flying:"#3DC7EF",
+    rock:"#A38C21",
+    ice:"#51C4E7",
+    fighting:"#D56723",
+    steel:"#9EB7B8",
+    ghost:"#7B62A3",
+
+    // Agrega más colores según los tipos
+  };
   const handleInput = (event) => {
     setPokeId(event.target.value);
   };
@@ -120,7 +142,12 @@ function Pokedex() {
           <ul className="tipo">
             {pokemon.types &&
               pokemon.types.map((type) => (
-                <li key={type.slot}>{type.type.name}</li>
+                <li
+                  key={type.slot}
+                  style={{ backgroundColor: typeColors[type.type.name] }}
+                >
+                  {type.type.name}
+                </li>
               ))}
           </ul>
         </div>
